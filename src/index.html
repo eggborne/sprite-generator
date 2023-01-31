@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kirby Quick Draw</title>
 </head>
 <body>
-  
+  <header>
+    <h1>Kirby Quick Draw</h1>
+  </header>
+  <main>
+    <div id="screen-area" class="center-flex">
+      <div id="game-screen"></div>
+    </div>
+    <div id="control-area" class="center-flex">
+      <button id="a-button" class="dimmed">A</button>
+    </div>
+    <div id="sprite-editor-area" class="center-flex"></div>
+    <div id="sprite-editor-grid"></div>
+  </main>
+  <footer><p>by <a href="https://mikedonovan.dev">mikedonovan.dev</a></p></footer>
+  <canvas id="image-canvas" width="16" height="16"></canvas>
 </body>
 </html>

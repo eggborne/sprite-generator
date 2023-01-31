@@ -1,4 +1,136 @@
+:root {
+  --actual-height: 100vh;
+  --header-height: 3rem;
+  --game-screen-width: 170px;
+  --game-screen-height: 140px;
+}
+
 * {
+  image-rendering: pixelated;
   margin: 0;
   box-sizing: border-box;
+}
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  height: var(--actual-height);
+  background-color: #222;
+  color: #aaa;
+  box-sizing: border-box;
+  font-family: Verdana, Tahoma, sans-serif;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body.loaded {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.loaded #screen-area,
+body.loaded #control-area {
+  opacity: 1;
+  scale: 1;
+}
+
+a {
+  color: rgb(183, 136, 136);
+}
+
+header, footer {
+  width: 100vw;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000077;
+}
+
+main {
+  background-color: #121;
+  flex-grow: 0;
+  transition: flex-grow 800ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.loaded main {
+  flex-grow: 1;
+}
+
+#screen-area, #control-area {
+  opacity: 0;
+  transition: opacity 800ms ease, scale 800ms ease;
+  transition-delay: 400ms;
+}
+
+#control-area {
+  scale: 0.5;
+  transition-delay: 800ms;
+}
+
+#screen-area {
+  flex-grow: 1;
+}
+
+#game-screen {
+  position: relative;
+  /* width: var(--game-screen-width);
+  height: var(--game-screen-height); */
+  background-color: #00000066;
+  /* scale: 2.3; */
+}
+
+.sprite-grid {
+  /* position: absolute; */
+  display: grid;
+  height: min-content;
+  width: min-content;
+  background-color: tan;
+}
+
+#sprite-editor-area {
+  position: absolute;
+  bottom: var(--header-height);
+  background-color: brown;
+  width: 100vw;
+  height: 100vw;
+  /* display: none; */
+}
+
+#sprite-editor-grid {
+  display: grid;
+  background-color: salmon;
+}
+
+.sprite-editor-grid > .editor-cell {
+
+}
+
+.sprite-pixel {
+  /* outline: solid green; */
+}
+
+#control-area {
+  height: 100vw;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#image-canvas {
+  position: absolute;
+  z-index: 12;
 }
