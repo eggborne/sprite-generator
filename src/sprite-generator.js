@@ -7,22 +7,22 @@ export default class SpriteGenerator {
           1: '#00aa00',
         },
         pattern: [
-          [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+          [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+          [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+          [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ]
       },
     };
@@ -73,10 +73,9 @@ export default class SpriteGenerator {
 }
 
 function getPixelArray(imgData, width, height) {
-  // get colors rgba (4 pix sequentially)
   let pixelArray = new Array(width);
-  pixelArray.fill([], 0, width);
-  console.log('empty is', [...pixelArray])
+  pixelArray.fill([], 0);
+  // console.log('empty is', pixelArray)
   let currentRow = 0;
   let currentColumn = 0;
   let cellCount = 0;
@@ -85,20 +84,20 @@ function getPixelArray(imgData, width, height) {
     let green = imgData.data[i + 1];
     let blue = imgData.data[i + 2];
     let alpha = imgData.data[i + 3];
-    console.log('adding string at row', currentRow, 'column', currentColumn,)
-    pixelArray[currentRow][currentColumn] = (`rgba(${red}, ${green}, ${blue}, ${alpha})`);
-    // console.log('arr row', currentRow, 'lenghth?', pixelArray[currentRow].length);
-    if (pixelArray[currentRow].length === width) {
+    let rgbaString = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    // console.log('adding', rgbaString, 'at row', currentRow, 'column', currentColumn);
+    pixelArray[currentRow][currentColumn] = rgbaString;
+    if (pixelArray[currentRow].length === width && i < width) {
       currentRow++;
       currentColumn = 0;
-      console.warn('new row');
+      // console.warn('new row');
     } else {
-      console.log('same row');
+      // console.log('same row');
       currentColumn++;
     }
     cellCount++;
   }
-  console.log('cell count', cellCount);
-  console.log('arr row 0 lenghth', pixelArray[0].length);
+  // console.log('cell count', cellCount);
+  console.table(pixelArray);
   return pixelArray;
 }

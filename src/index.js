@@ -11,7 +11,7 @@ window.addEventListener('load', async () => {
 
   let spriteGenerator = new SpriteGenerator();
   let arr = await spriteGenerator.getImageArray(kirbyPNG, 16, 16);
-  console.log('arr?', arr);
+  
   spriteGenerator.spritePatterns.kirby.pattern = arr;
-  // spriteGenerator.createSpriteElement('kirby', '16px');
+  // spriteGenerator.createSpriteElement('kirby', 16);
 });
